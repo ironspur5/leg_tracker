@@ -12,6 +12,7 @@ Usage
     - $ sudo pip install pykalman
 - $ cd [your catkin_workspace]
 - $ catkin_make
+- Replace view_rplidar.launch file from home directory to your rplidar_ros/launch folder
 - $ roslaunch leg_tracker joint_leg_tracker.launch
 
 
