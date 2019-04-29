@@ -280,6 +280,7 @@ private:
       m.color.g = leg.confidence;
       m.color.b = leg.confidence;
       markers_pub_.publish(m);
+
       //ROS_INFO("Position of id %d: (%d %d)\n", id_num, m.pose.position.x, m.pose.position.y ); 
 
       // Comparison using '==' and not '>=' is important, as it allows <max_detected_clusters_>=-1 
@@ -299,7 +300,7 @@ private:
       m.action = m.DELETE;
       std::cerr<< "test: " << m.id << "\n";
       markers_pub_.publish(m);
-      ROS_INFO("Position of id %d: (%d %d)\n", m.id, m.pose.position.x, m.pose.position.y ); 
+      // ROS_INFO("Position of id %d: (%d %d)\n", m.id, m.pose.position.x, m.pose.position.y ); 
     }
     num_prev_markers_published_ = id_num; // For the next callback
 

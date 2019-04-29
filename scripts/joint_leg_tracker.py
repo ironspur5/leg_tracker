@@ -675,7 +675,7 @@ class KalmanMultiTracker:
                         marker.scale.z = 1.2
                         marker.pose.position.z = 0.8
                         self.marker_pub.publish(marker)  
-                        rospy.loginfo("Marker id: %d; (%d,%d)", marker.id, marker.pose.position.x, marker.pose.position.y)
+                        print("Marker id: " + marker.id + "(" marker.pose.position.x ", " + marker.pose.position.y)
                         # Sphere for head shape                        
                         marker.type = Marker.SPHERE
                         marker.scale.x = 0.2
