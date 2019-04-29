@@ -78,7 +78,7 @@ public:
     nh_.param("cluster_dist_euclid", cluster_dist_euclid_, 0.13); //0.13
     nh_.param("min_points_per_cluster", min_points_per_cluster_, 3); //3               
     nh_.param("max_detect_distance", max_detect_distance_, 10.0);  //10.0 
-    nh_.param("marker_display_lifetime", marker_display_lifetime_, 0.2); //0.2
+    nh_.param("marker_display_lifetime", marker_display_lifetime_, 100); //0.2
     nh_.param("use_scan_header_stamp_for_tfs", use_scan_header_stamp_for_tfs_, false); //false
     nh_.param("max_detected_clusters", max_detected_clusters_, -1); //-1 //changing this to not -1 broke it
 
