@@ -298,7 +298,7 @@ private:
       m.ns = "LEGS";
       m.id = id_num_diff + id_num;
       m.action = m.DELETE;
-      std::cerr<< "test: " << m.id << "\n";
+      // std::cerr<< "test: " << m.id << "\n";
       markers_pub_.publish(m);
       // ROS_INFO("Position of id %d: (%d %d)\n", m.id, m.pose.position.x, m.pose.position.y ); 
     }

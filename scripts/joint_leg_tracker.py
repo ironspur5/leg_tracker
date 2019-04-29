@@ -675,7 +675,7 @@ class KalmanMultiTracker:
                         marker.scale.z = 1.2
                         marker.pose.position.z = 0.8
                         self.marker_pub.publish(marker)  
-                        print("Marker id: " + marker.id + "(" marker.pose.position.x ", " + marker.pose.position.y)
+                        # print("Marker id: " + marker.id + "(" marker.pose.position.x ", " + marker.pose.position.y)
                         # Sphere for head shape                        
                         marker.type = Marker.SPHERE
                         marker.scale.x = 0.2
@@ -722,7 +722,7 @@ class KalmanMultiTracker:
                         marker.scale.y = 0.1
                         marker.scale.z = 0.2
                         self.marker_pub.publish(marker)                           
-
+                        rospy.loginfo("Hello there\n")
                         # <self.confidence_percentile>% confidence bounds of person's position as an ellipse:
                         cov = person.filtered_state_covariances[0][0] + person.var_obs # cov_xx == cov_yy == cov
                         std = cov**(1./2.)
