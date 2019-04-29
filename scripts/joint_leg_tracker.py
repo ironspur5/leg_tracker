@@ -742,7 +742,7 @@ class KalmanMultiTracker:
                         marker_id += 1        
                         x_pos = str(marker.pose.position.x)
                         y_pos = str(marker.pose.position.y)
-                        print_id = str(marker.id)
+                        print_id = str(person.id_num)
                         rospy.loginfo("Marker id: %s; Position: (%s, %s)\n" % (print_id, x_pos, y_pos))
                         self.marker_pub.publish(marker)                
 
