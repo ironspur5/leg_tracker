@@ -190,9 +190,9 @@ class KalmanMultiTracker:
         self.publish_people_frame = rospy.get_param("publish_people_frame", self.fixed_frame)
         self.use_scan_header_stamp_for_tfs = rospy.get_param("use_scan_header_stamp_for_tfs", False)
         self.publish_detected_people = rospy.get_param("display_detected_people", False)        
-        self.dist_travelled_together_to_initiate_leg_pair = rospy.get_param("dist_travelled_together_to_initiate_leg_pair", 0.5)
+        self.dist_travelled_together_to_initiate_leg_pair = rospy.get_param("dist_travelled_together_to_initiate_leg_pair", 0.05) # 0.5
         self.scan_frequency = rospy.get_param("scan_frequency", 7.5)
-        self.confidence_percentile = rospy.get_param("confidence_percentile", 0.90)
+        self.confidence_percentile = rospy.get_param("confidence_percentile", 0.30) # 0.90
         self.max_std = rospy.get_param("max_std", 0.9)
 
         self.mahalanobis_dist_gate = scipy.stats.norm.ppf(1.0 - (1.0-self.confidence_percentile)/2., 0, 1.0)

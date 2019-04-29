@@ -173,17 +173,17 @@ class KalmanMultiTracker:
 
         # Get ROS params
         self.fixed_frame = rospy.get_param("fixed_frame", "odom")
-        self.max_leg_pairing_dist = rospy.get_param("max_leg_pairing_dist", 0.8)
+        self.max_leg_pairing_dist = rospy.get_param("max_leg_pairing_dist", 0.8) # 0.8
         self.confidence_threshold_to_maintain_track = rospy.get_param("confidence_threshold_to_maintain_track", 0.1)
         self.publish_occluded = rospy.get_param("publish_occluded", True)
         self.publish_people_frame = rospy.get_param("publish_people_frame", self.fixed_frame)
         self.use_scan_header_stamp_for_tfs = rospy.get_param("use_scan_header_stamp_for_tfs", False)
         self.publish_detected_people = rospy.get_param("display_detected_people", False)        
-        self.dist_travelled_together_to_initiate_leg_pair = rospy.get_param("dist_travelled_together_to_initiate_leg_pair", 0.5)
+        self.dist_travelled_together_to_initiate_leg_pair = rospy.get_param("dist_travelled_together_to_initiate_leg_pair", 0.05) # 0.5 # changing to 0.1 made it faster in tracking, good!
         scan_topic = rospy.get_param("scan_topic", "scan");
         self.scan_frequency = rospy.get_param("scan_frequency", 7.5)
         self.in_free_space_threshold = rospy.get_param("in_free_space_threshold", 0.06)
-        self.confidence_percentile = rospy.get_param("confidence_percentile", 0.90)
+        self.confidence_percentile = rospy.get_param("confidence_percentile", 0.90) # 0.90
         self.max_std = rospy.get_param("max_std", 0.9)
 
         self.mahalanobis_dist_gate = scipy.stats.norm.ppf(1.0 - (1.0-self.confidence_percentile)/2., 0, 1.0)

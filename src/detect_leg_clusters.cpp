@@ -74,13 +74,13 @@ public:
       ROS_ERROR("ERROR! Could not get random forest filename");
     nh_.param("scan_topic", scan_topic, std::string("scan"));
     nh_.param("fixed_frame", fixed_frame_, std::string("odom"));
-    nh_.param("detection_threshold", detection_threshold_, -1.0);
-    nh_.param("cluster_dist_euclid", cluster_dist_euclid_, 0.13);
-    nh_.param("min_points_per_cluster", min_points_per_cluster_, 3);                
-    nh_.param("max_detect_distance", max_detect_distance_, 10.0);   
-    nh_.param("marker_display_lifetime", marker_display_lifetime_, 0.2);   
-    nh_.param("use_scan_header_stamp_for_tfs", use_scan_header_stamp_for_tfs_, false);
-    nh_.param("max_detected_clusters", max_detected_clusters_, -1);
+    nh_.param("detection_threshold", detection_threshold_, -1.0); //-1.0
+    nh_.param("cluster_dist_euclid", cluster_dist_euclid_, 0.13); //0.13
+    nh_.param("min_points_per_cluster", min_points_per_cluster_, 3); //3               
+    nh_.param("max_detect_distance", max_detect_distance_, 10.0);  //10.0 
+    nh_.param("marker_display_lifetime", marker_display_lifetime_, 0.2); //0.2
+    nh_.param("use_scan_header_stamp_for_tfs", use_scan_header_stamp_for_tfs_, false); //false
+    nh_.param("max_detected_clusters", max_detected_clusters_, -1); //-1 //changing this to not -1 broke it
 
     // Print back
     ROS_INFO("forest_file: %s", forest_file.c_str());
@@ -280,6 +280,7 @@ private:
       m.color.g = leg.confidence;
       m.color.b = leg.confidence;
       markers_pub_.publish(m);
+      //ROS_INFO("Position of id %d: (%d %d)\n", id_num, m.pose.position.x, m.pose.position.y ); 
 
       // Comparison using '==' and not '>=' is important, as it allows <max_detected_clusters_>=-1 
       // to publish infinite markers
@@ -297,6 +298,7 @@ private:
       m.id = id_num_diff + id_num;
       m.action = m.DELETE;
       markers_pub_.publish(m);
+      ROS_INFO("Position of id %d: (%d %d)\n", m.id, m.pose.position.x, m.pose.position.y ); 
     }
     num_prev_markers_published_ = id_num; // For the next callback
 
