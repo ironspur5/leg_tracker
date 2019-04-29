@@ -674,7 +674,6 @@ class KalmanMultiTracker:
                         marker.scale.y = 0.2
                         marker.scale.z = 1.2
                         marker.pose.position.z = 0.8
-                        marker.lifetime = rospy.rostime.Duration
                         self.marker_pub.publish(marker)  
                         # print("Marker id: " + marker.id + "(" marker.pose.position.x ", " + marker.pose.position.y)
                         # Sphere for head shape                        
