@@ -721,8 +721,8 @@ class KalmanMultiTracker:
                         marker.scale.x = 0.05
                         marker.scale.y = 0.1
                         marker.scale.z = 0.2
-                        self.marker_pub.publish(marker)                           
-                        rospy.loginfo("Hello there\n")
+                        self.marker_pub.publish(marker)                
+                        rospy.loginfo("\n")
                         # <self.confidence_percentile>% confidence bounds of person's position as an ellipse:
                         cov = person.filtered_state_covariances[0][0] + person.var_obs # cov_xx == cov_yy == cov
                         std = cov**(1./2.)
@@ -739,7 +739,11 @@ class KalmanMultiTracker:
                         marker.color.a = 0.1
                         marker.pose.position.z = 0.0
                         marker.id = marker_id 
-                        marker_id += 1                    
+                        marker_id += 1        
+                        x_pos = str(marker.pose.position.x)
+                        y_pos = str(marker.pose.position.y)
+                        print_id = str(marker.id)
+                        rospy.loginfo("Marker id: %s; Position: (%s, %s)\n" % (print_id, x_pos, y_pos))
                         self.marker_pub.publish(marker)                
 
         # Clear previously published people markers
