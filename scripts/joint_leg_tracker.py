@@ -674,9 +674,8 @@ class KalmanMultiTracker:
                         marker.scale.y = 0.2
                         marker.scale.z = 1.2
                         marker.pose.position.z = 0.8
-                        marker.text = "(" + str(ps.point.x) + ", " + str(ps.point.y) + ")"
                         self.marker_pub.publish(marker)  
-                        # print("Marker id: " + marker.id + "(" marker.pose.position.x ", " + marker.pose.position.y)
+                                             
                         # Sphere for head shape                        
                         marker.type = Marker.SPHERE
                         marker.scale.x = 0.2
@@ -687,6 +686,11 @@ class KalmanMultiTracker:
                         marker_id += 1                        
                         self.marker_pub.publish(marker)     
 
+                        # #Text above cylinder
+                        # marker.type = Marker.TEXT_VIEW_FACING
+                        # marker.id = marker_id
+                        # marker_id += 1
+
                         # Text showing person's ID number 
                         marker.color.r = 1.0
                         marker.color.g = 1.0
@@ -695,9 +699,9 @@ class KalmanMultiTracker:
                         marker.id = marker_id
                         marker_id += 1
                         marker.type = Marker.TEXT_VIEW_FACING
-                        marker.text = str(person.id_num)
+                        marker.text = str(person.id_num) + "\n" + "(" + str(marker.pose.position.x) + ", " + str(marker.pose.position.y) + ")"
                         marker.scale.z = 0.2         
-                        marker.pose.position.z = 1.7
+                        marker.pose.position.z = 1.9
                         self.marker_pub.publish(marker)
 
                         # Arrow pointing in direction they're facing with magnitude proportional to speed
