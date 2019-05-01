@@ -699,7 +699,7 @@ class KalmanMultiTracker:
                         marker.id = marker_id
                         marker_id += 1
                         marker.type = Marker.TEXT_VIEW_FACING
-                        marker.text = str(person.id_num) + "\n" + "(" + str(marker.pose.position.x)[0:5] + ", " + str(marker.pose.position.y)[0:5] + ")"
+                        marker.text = "     " + str(person.id_num) + "\n" + "(" + str(marker.pose.position.x)[0:5] + ", " + str(marker.pose.position.y)[0:5] + ")"
                         marker.scale.z = 0.2         
                         marker.pose.position.z = 1.9
                         self.marker_pub.publish(marker)
